@@ -10,5 +10,10 @@ class Home {
         this.searchbar = this.page.getByPlaceholder('Search Amazon');
         this.searchButton = this.page.getByRole('button', { name: 'Go', exact: true })
     }
+
+    async searchForProduct(product:string) {
+        await this.searchbar.fill(String(product));
+        await this.searchButton.click();
+    }
 }
 export default Home;
