@@ -5,7 +5,7 @@ class SearchResults {
     readonly productNameInfoBar: Locator;
 
 
-    constructor(page) {
+    constructor(page: Page) {
         this.page = page;
         this.productNameInfoBar = page.locator('h1 span.a-color-state.a-text-bold');
 

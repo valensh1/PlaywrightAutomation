@@ -5,7 +5,7 @@ class Home {
     readonly searchbar: Locator;
     readonly searchButton: Locator;
 
-    constructor(page) {
+    constructor(page: Page) {
         this.page = page;
         this.searchbar = this.page.getByPlaceholder('Search Amazon');
         this.searchButton = this.page.getByRole('button', { name: 'Go', exact: true })
