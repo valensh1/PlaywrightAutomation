@@ -1,1 +1,4 @@
-export const product = 'iPad';
+class AmazonTestData {
+    product:string = 'iPad'
+}
+export default AmazonTestData;
