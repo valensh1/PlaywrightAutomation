@@ -1,4 +1,4 @@
 class AmazonTestData {
-    product:string = 'iPad'
+  product: string = 'Nespresso';
 }
 export default AmazonTestData;

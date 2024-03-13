@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import SearchResults from './SearchResults';
 
 class Home {
   readonly page: Page;
@@ -17,14 +18,20 @@ class Home {
   }
 
   async searchForProduct(product: string) {
+    const searchResults = new SearchResults(this.page);
+
     try {
-      await this.searchbar.fill(String(product));
+      await this.searchbar.fill(String(product), { timeout: 3500 });
       await this.searchButton.click();
       await this.page.waitForLoadState('load');
+
+      await searchResults.paginationContainer.waitFor({ state: 'visible' });
     } catch (error) {
+      console.log('Normal search window did not display');
       await this.altSearchbar.fill(String(product));
       await this.searchButton.click();
       await this.page.waitForLoadState('load');
+      await searchResults.paginationContainer.waitFor({ state: 'visible' });
     }
   }
 }
