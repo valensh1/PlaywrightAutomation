@@ -10,7 +10,7 @@ class Home {
   constructor(page: Page) {
     this.page = page;
     this.searchbar = this.page.getByPlaceholder('Search Amazon');
-    this.altSearchbar = this.page.locator(`input[title=Search For]`);
+    this.altSearchbar = this.page.getByRole('textbox', { name: 'Search For' });
     this.searchButton = this.page.getByRole('button', {
       name: 'Go',
       exact: true,

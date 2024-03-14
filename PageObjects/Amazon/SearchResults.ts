@@ -14,7 +14,6 @@ class SearchResults {
     this.page = page;
     this.productImages = page.locator('div[data-index="3"] img').first();
     this.productNameInfoBar = page.locator('h1 span.a-color-state.a-text-bold');
-    // this.productDescriptions = page.locator('h2 > a');
     this.productDescriptions = page.locator('div[data-cy="title-recipe"]');
     this.productBrandLabels = page.locator('h2 > span');
     this.brandFilters = page

@@ -69,7 +69,7 @@ class ProductDisplayPage {
         timeout: 2000,
       });
     } catch (error) {
-      console.log('There is no add to your order modal displaying');
+      console.log('There is no Add To Your Order modal displaying');
     }
     if (await this.addToYourOrderModal.isVisible()) {
       await this.noThanksButton.click();
@@ -79,6 +79,7 @@ class ProductDisplayPage {
     this.productsAdded.productDescription.push(productDescription);
     this.productsAdded.quantity += 1;
   }
+
 
   async selectProductQuantity(quantity: number): Promise<void> {
     await this.productQuantityDropdown.click();

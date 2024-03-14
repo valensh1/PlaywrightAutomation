@@ -20,19 +20,18 @@ test.describe('Search functionality', async () => {
 
     await page.goto('https://www.amazon.com/');
     await home.searchForProduct(String(product));
-    // await searchResults.paginationContainer.waitFor('visible');
 
     allProductDescriptions =
       await searchResults.productDescriptions.allTextContents(); // Must be placed AFTER search is performed to get all the descriptions
   });
 
-  test('Basic Search - Validate product search returns the correct product results @TC-1', async ({
+  test('Basic Product Search - Validate product search returns the correct product results @TC-1', async ({
     page,
   }) => {
+    await expect(page).toHaveURL(regEx); // TC-1 2.1
     await expect(searchResults.productNameInfoBar).toContainText(
       String(product)
-    );
-    await expect(page).toHaveURL(regEx);
+    ); // TC-1 2.2
 
     const array: boolean[] = [];
     for (let description of allProductDescriptions) {
@@ -41,12 +40,10 @@ test.describe('Search functionality', async () => {
       } else {
         array.push(false);
       }
-      // expect(description).toMatch(regEx);
     }
-    // const isProductDisplayed = array.includes(true);
-    console.log(allProductDescriptions);
-    console.log(array);
-    expect(array).toContain(true);
+
+    // Assertions
+    expect(array).toContain(true); // TC-1 2.3
   });
 
   test('Single Brand Filter Search - Filter search results on 1 brand and assert search results update to only show products with that brand @TC-2', async ({
@@ -67,7 +64,7 @@ test.describe('Search functionality', async () => {
 
     // Assert updated search results only display products with brand filtered on
     for (let description of allProductDescriptions) {
-      expect(description).toMatch(regEx);
+      expect(description).toMatch(regEx); // TC-2 2
     }
   });
 });
