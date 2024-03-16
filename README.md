@@ -123,7 +123,7 @@ npm run dev
 
 ## Roadmap
 
-- [ ] Add more automated tests running against Amazon.com showcasing more Playwright features
+- [ ] Add additional automated tests running against Amazon.com showcasing more Playwright features
 - [ ] Snapshot Assertions
 - [ ] Add additional API tests
 - [ ] Allure Reporting
