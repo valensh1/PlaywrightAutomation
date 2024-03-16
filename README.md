@@ -55,20 +55,20 @@
 
 ## About The Project
 
-Project Overview:
+### Project Overview:
 
 - This project demonstrates expertise in both Playwright automation and API testing.
 - Leveraging Playwright's capabilities, the project conducts rigorous tests on websites like Amazon, ensuring the reliability of critical functionalities such as search accuracy and shopping cart operations.
 - Additionally, API testing is integrated, with tests on the Restful-Booker API to validate successful booking requests and accurate response retrieval.
 - Through this project, I showcase proficiency in both frontend and backend testing methodologies, emphasizing a holistic approach to ensure web application quality and reliability.
 
-Amazon Tests:
+### Amazon Tests:
 
 - Validate search functionality: Ensure search results correspond correctly to the searched item.
 - Verify brand filtering: Confirm that filtering by brand yields accurate results.
 - Test shopping cart operations: Ensure users can add items to and delete items from their shopping cart.
 
-Restful-Booker API Testing:
+### Restful-Booker API Testing:
 
 - Validate booking POST requests: Confirm successful transmission of booking requests.
 - Test GET requests: Ensure retrieval of valid responses and response bodies containing bookings created from POST requests.
