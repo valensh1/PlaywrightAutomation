@@ -7,6 +7,7 @@ interface ProductsAdded {
 
 class ProductDisplayPage {
   readonly page: Page;
+  readonly productMainImageDisplay: Locator;
   readonly addToCartButton: Locator;
   readonly addToYourOrderModal: Locator;
   readonly noThanksButton: Locator;
@@ -27,6 +28,7 @@ class ProductDisplayPage {
 
   constructor(page) {
     this.page = page;
+    this.productMainImageDisplay = page.locator('.imgTagWrapper > img');
     this.addToCartButton = page.locator('#add-to-cart-button').first();
     this.addToYourOrderModal = page.locator('#attach-warranty');
     this.noThanksButton = page.getByRole('button', { name: 'No Thanks' });
@@ -50,7 +52,11 @@ class ProductDisplayPage {
   }
 
   async getProductPrice(): Promise<string> {
-    return await this.productPriceTag.innerText();
+    const string = await this.productPriceTag.innerText();
+    const beginningIndex = string.indexOf('$');
+    const endingIndex = string.indexOf(' ');
+    const price = string.slice(beginningIndex, endingIndex + 1);
+    return price;
   }
 
   async getProductDescription(): Promise<string> {
@@ -78,6 +84,12 @@ class ProductDisplayPage {
     this.productsAdded.productPrice.push(productPrice);
     this.productsAdded.productDescription.push(productDescription);
     this.productsAdded.quantity += 1;
+  }
+
+  async getProductImage(): Promise<void> {
+    const image = this.productMainImageDisplay.first();
+    await image.screenshot({ path: 'Screenshots/productImage.png' });
+    // await image.screenshot({ path: 'tests/Amazon/shoppingCart.spec.ts-snapshots/productImage.png' });
   }
 
 
