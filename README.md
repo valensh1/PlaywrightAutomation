@@ -68,7 +68,7 @@
 - Validate search functionality: Ensure search results correspond correctly to the searched item.
 - Verify brand filtering: Confirm that filtering by brand yields accurate results.
 - Test shopping cart operations: Ensure users can add items to and delete items from their shopping cart.
-- Visual Testing - ensure product image displayed in shopping cart matches the correct image
+- Visual Testing - Ensure product image displayed in shopping cart matches the correct image
 
 ### Restful-Booker API Testing:
 
