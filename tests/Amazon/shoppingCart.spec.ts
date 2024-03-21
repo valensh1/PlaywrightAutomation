@@ -20,7 +20,7 @@ test.describe("Shopping cart functionality", async () => {
     await home.searchForProduct(String(product));
   });
 
-  test("Add product to shopping cart - SINGLE ITEM @TC-3", async ({
+  test("Add product to shopping cart - SINGLE ITEM", { tag: '@TC-3' }, async ({
     page,
   }) => {
     // Variables & Instances of Class
@@ -60,7 +60,7 @@ test.describe("Shopping cart functionality", async () => {
   });
 
 
-  test("Delete shopping cart item - SINGLE ITEM @TC-4", async ({ page }) => {
+  test("Delete shopping cart item - SINGLE ITEM", { tag: '@TC-4' }, async ({ page }) => {
     // Variables & Instances of Class
     const navigation = new Navigation(page);
     const shoppingCart = new ShoppingCart(page);
@@ -98,7 +98,7 @@ test.describe("Shopping cart functionality", async () => {
     }
   });
 
-  test('Validate correct product image displays in shopping cart - SINGLE ITEM', async ({ page }) => {
+  test('Visual Testing - Validate correct product image displays in shopping cart - SINGLE ITEM', { tag: '@TC-6' }, async ({ page }) => {
     const navigation = new Navigation(page);
     const searchResults = new SearchResults(page);
     const productDisplayPage = new ProductDisplayPage(page);

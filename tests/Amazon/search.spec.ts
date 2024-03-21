@@ -25,7 +25,7 @@ test.describe('Search functionality', async () => {
       await searchResults.productDescriptions.allTextContents(); // Must be placed AFTER search is performed to get all the descriptions
   });
 
-  test('Basic Product Search - Validate product search returns the correct product results @TC-1', async ({
+  test('Basic Product Search - Validate product search returns the correct product results', { tag: '@TC-1' }, async ({
     page,
   }) => {
     await expect(page).toHaveURL(regEx); // TC-1 2.1
@@ -46,7 +46,7 @@ test.describe('Search functionality', async () => {
     expect(array).toContain(true); // TC-1 2.3
   });
 
-  test('Single Brand Filter Search - Filter search results on 1 brand and assert search results update to only show products with that brand @TC-2', async ({
+  test('Single Brand Filter Search - Filter search results on 1 brand and assert search results update to only show products with that brand', { tag: '@TC-2' }, async ({
     page,
   }) => {
     const productBrandLabels =
