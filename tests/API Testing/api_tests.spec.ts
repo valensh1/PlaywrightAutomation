@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // API Tests from https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-CreateBooking
 // Create booking
-test('Create Booking with POST request and then validate that GET request sends correct response body back', { tag: '@TC-5' }, async ({ request }) => {
+test('Create Booking with POST request and then validate that GET request sends correct response body back', { tag: '@TG-T5' }, async ({ request }) => {
     const price = 10;
     const body = {
         "firstname": "Brock",
