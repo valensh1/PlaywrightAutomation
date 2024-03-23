@@ -71,7 +71,7 @@ test.describe('Search functionality', async () => {
     }
   });
 
-  test.only('Price Range Filter - Validate that products within the specified price range are displayed in the search results when filter is applied', { tag: '@TG-T7' }, async ({ page }) => {
+  test('Price Range Filter - Validate that products within the specified price range are displayed in the search results when filter is applied', { tag: '@TG-T7' }, async ({ page }) => {
     const priceRangeFilterNumber = 1;
     await searchFilters.priceRangeFilters.last().waitFor({ state: 'visible' });
     const priceRange = await searchFilters.getFiltersPriceRange(priceRangeFilterNumber);
