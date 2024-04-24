@@ -1,28 +1,48 @@
 import { test, expect } from '@playwright/test';
 import Home from '../../PageObjects/Automation_Exercise/Home';
-import SignupLogin from '../../PageObjects/Automation_Exercise/SignupLogin';
-import AccountInformation from '../../PageObjects/Automation_Exercise/AccountInformation';
+import SignupLogin from '../../PageObjects/Automation_Exercise/Login_Register/SignupLogin';
+import AccountInformation from '../../PageObjects/Automation_Exercise/Login_Register/AccountInformation';
 import testData from '../../TestData/AutomationExercise/testData';
+import AccountCreated from '../../PageObjects/Automation_Exercise/Login_Register/AccountCreated';
+import LoginHelperMethods from '../../PageObjects/Automation_Exercise/Login_Register/LoginHelperMethods'
+
+test.describe.serial.only('Login Functionality', () => {
+    let home, signupLogin, accountInformation, accountCreated, helper;
+
+    test.beforeEach(async ({ page }) => {
+        home = new Home(page);
+        signupLogin = new SignupLogin(page);
+        accountInformation = new AccountInformation(page);
+        accountCreated = new AccountCreated(page);
+        helper = new LoginHelperMethods(page);
+    })
+
+    test('Register user and then delete user account', { tag: '@TG-T1' }, async ({ page }) => {
+        await page.goto('https://www.automationexercise.com/');
+        await home.signupLoginLink.click();
+        await expect(signupLogin.newUserSignUpHeading).toBeVisible();
+        await signupLogin.accountSignup(testData.login.name, testData.login.emailAddress);
+        await expect(accountInformation.enterAccountInformationHeading).toBeVisible();
+        await accountInformation.completeNewAccountInformation(testData);
+        await expect(accountCreated.accountCreatedHeading).toHaveText(/ACCOUNT CREATED!/i);
+        await accountCreated.continueButton.click();
+        await home.validateUserLoggedIn(testData.accountInformation.firstName, testData.accountInformation.lastName);
+        await home.deleteAccountLink.click();
+        await expect(accountCreated.accountDeletedHeading).toHaveText(/ACCOUNT DELETED!/i);
+        await accountCreated.continueButton.click();
+    });
+
+    test('Login user with correct email and password', { tag: '@TG-T2' }, async ({ page }) => {
+        await helper.createAccount(testData);
+        await helper.logoutAccount();
+        await helper.loginAccount(false);
+        await home.validateUserLoggedIn(testData.accountInformation.firstName, testData.accountInformation.lastName);
+        await helper.deleteAccount(false);
+    })
+})
 
 
-test.only('Register user', async ({ page }) => {
-    const home = new Home(page);
-    const signupLogin = new SignupLogin(page);
-    const accountInformation = new AccountInformation(page);
 
-    await page.goto('https://www.automationexercise.com/');
-    await home.signupLoginButton.click();
-    await expect(signupLogin.newUserSignUpHeading).toBeVisible();
-    await signupLogin.signupNameInput.fill('Automation Guru');
-    await signupLogin.signupEmailInput.fill('automationGuru@gmail.com');
-    await signupLogin.signupButton.click();
-    await expect(accountInformation.enterAccountInformationHeading).toBeVisible();
-    await accountInformation.selectTitle(testData.accountInformation.title);
-    await accountInformation.password.pressSequentially('Automation!', { delay: 125 });
-    await accountInformation.DOB_dropdownSelection(testData.accountInformation.day, testData.accountInformation.month, testData.accountInformation.year);
-    await accountInformation.signupNewsLetterCheckbox.check();
-    await accountInformation.specialOffersCheckbox.check();
-    await accountInformation.firstNameInput.fill(testData.accountInformation.firstName);
-    await accountInformation.lastNameInput.fill(testData.accountInformation.lastName);
 
-});
+
+
