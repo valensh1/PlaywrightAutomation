@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 import testData from "../../../TestData/AutomationExercise/testData";
-import { Login, AccountInfo } from "../../../TestData/AutomationExercise/testData";
+import { AccountInfo } from "../../../TestData/AutomationExercise/testData";
 import Home from "../Home";
 import SignupLogin from "./SignupLogin";
 import AccountInformation from "./AccountInformation";

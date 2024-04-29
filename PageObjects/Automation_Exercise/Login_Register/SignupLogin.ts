@@ -8,6 +8,7 @@ class SignupLogin {
     readonly signupNameInput: Locator;
     readonly signupEmailInput: Locator;
     readonly signupButton: Locator;
+    readonly incorrectLoginMessage: Locator;
     constructor(page: Page) {
         this.newUserSignUpHeading = page.getByText('New User Signup!');
         this.loginEmailInput = page.locator('input[data-qa="login-email"]');
@@ -16,6 +17,7 @@ class SignupLogin {
         this.signupNameInput = page.locator('input[data-qa="signup-name"]');
         this.signupEmailInput = page.locator('input[data-qa="signup-email"]');
         this.signupButton = page.getByRole('button', { name: 'Signup' });
+        this.incorrectLoginMessage = page.locator('.login-form').getByRole('paragraph').getByText(/Your email or password is incorrect/i);
     }
 
     async accountSignup(name: string, emailAddress: string) {
