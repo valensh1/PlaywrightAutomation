@@ -56,7 +56,7 @@ test.describe.serial.only('Login Functionality', () => {
     });
 
     // Need to place this in a Test Case with sample data coming from Excel sheet
-    test.only('Test with Excel Data', async ({ page }) => {
+    test.skip('Test with Excel Data', async ({ page }) => {
         const workbook = readFile(path.resolve(__dirname, '../../TestData/AutomationExercise/Excel_TestData.xlsx'));
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const data = utils.sheet_to_json(worksheet);
