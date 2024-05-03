@@ -5,10 +5,13 @@ class Home {
     readonly loggedInAsText: Locator;
     readonly deleteAccountLink: Locator;
     readonly logoutLink: Locator;
+    readonly contactUsLink: Locator;
     constructor(page: Page) {
         this.signupLoginLink = page.getByText(' Signup / Login');
         this.deleteAccountLink = page.getByRole('link', { name: /Delete Account/i });
         this.logoutLink = page.getByRole('link', { name: /Logout/i });
+        this.contactUsLink = page.getByRole('link', { name: 'Contact us' })
+
         this.loggedInAsText = page.locator('ul > li');
     }
 
